@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/flovilmart/parse-cloud-additions",
   "dependencies": {
-    "parse": "~1.2.17"
+    "parse": "~1.2.17",
+    "xmlhttprequest": ">=1.3.0"
   }
 }
