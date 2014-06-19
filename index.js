@@ -1,5 +1,5 @@
 var Parse = require("parse").Parse;
-
+global.Parse = Parse;
 Parse.Cloud = {};
 Parse.Cloud.job = Parse.Cloud.define = Parse.Cloud.beforeSave =
 Parse.Cloud.afterSave = Parse.Cloud.beforeDelete = Parse.Cloud.afterDelete = function(){};
