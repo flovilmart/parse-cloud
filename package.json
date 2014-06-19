@@ -1,0 +1,22 @@
+{
+  "name": "parse-cloud-additions",
+  "version": "0.0.1",
+  "description": "Parse Cloud additions for parse-develop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flovilmart/parse-cloud-additions.git"
+  },
+  "author": "Florent Vilmart",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/flovilmart/parse-cloud-additions/issues"
+  },
+  "homepage": "https://github.com/flovilmart/parse-cloud-additions",
+  "dependencies": {
+    "parse": "^1.2.17"
+  }
+}
