@@ -1,6 +1,6 @@
 {
   "name": "parse-cloud",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Parse Cloud additions for parse-develop",
   "main": "index.js",
   "scripts": {
