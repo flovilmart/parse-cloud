@@ -1,4 +1,4 @@
-parse-cloud-additions
+parse-cloud
 =====================
 
-Parse Cloud Additions for parse-develop
+Parse Cloud for parse-develop
