@@ -1,6 +1,6 @@
 {
-  "name": "parse-cloud-additions",
-  "version": "0.0.2",
+  "name": "parse-cloud",
+  "version": "0.0.3",
   "description": "Parse Cloud additions for parse-develop",
   "main": "index.js",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/flovilmart/parse-cloud-additions.git"
+    "url": "https://github.com/flovilmart/parse-cloud.git"
   },
   "author": "Florent Vilmart",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/flovilmart/parse-cloud-additions/issues"
+    "url": "https://github.com/flovilmart/parse-cloud/issues"
   },
-  "homepage": "https://github.com/flovilmart/parse-cloud-additions",
+  "homepage": "https://github.com/flovilmart/parse-cloud",
   "dependencies": {
     "parse": "~1.2.17",
     "xmlhttprequest": ">=1.3.0"
