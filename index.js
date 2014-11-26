@@ -1,5 +1,5 @@
 var Parse = require("parse").Parse;
-
+var bodyParser = require('body-parser');
 Parse.Cloud = Parse.Cloud || {};
 Parse.Cloud.job = Parse.Cloud.define = Parse.Cloud.beforeSave = Parse.Cloud.afterSave = Parse.Cloud.afterDelete = function(){};
 
@@ -13,13 +13,13 @@ var hook = function(hook, app) {
 		};
 		registered[hook] ? undefined : registered[hook] = []
 		registered[hook].push(className);
-		app.get("/cloudcode/"+className+"/"+hook, function(req, res){
-			callback(req, {
+		app.get("/cloudcode/"+className+"/"+hook, bodyParser.json(),  function(req, res){
+			callback(req.body, {
 				success: function(data){
-					res.send(data)
+					res.send({success: data})
 				},
 				error: function(error){
-					res.fail(error)
+					res.send({error: error})
 				}
 			})
 		})
@@ -40,7 +40,6 @@ module.exports.CloudCode = function(app) {
 	Parse.Cloud.beforeDelete = hook("beforeDelete", app); 
 	Parse.Cloud.afterDelete = hook("afterDelete", app);
 }
-
 module.exports.LogCloudCodeFunctions = function(){
 	var keys = Object.keys(registered);
 	for(var k in keys) {
