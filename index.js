@@ -13,7 +13,7 @@ var hook = function(hook, app) {
 		};
 		registered[hook] ? undefined : registered[hook] = []
 		registered[hook].push(className);
-		app.get("/cloudcode/"+className+"/"+hook, bodyParser.json(),  function(req, res){
+		app.post("/cloudcode/"+className+"/"+hook, bodyParser.json(),  function(req, res){
 			callback(req.body, {
 				success: function(data){
 					res.send({success: data})
