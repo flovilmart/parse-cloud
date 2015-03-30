@@ -1,15 +1,52 @@
 var Parse = require("parse").Parse;
 
 Parse.Cloud = Parse.Cloud || {};
-Parse.Cloud.job = Parse.Cloud.define = Parse.Cloud.beforeSave =
-Parse.Cloud.afterSave = Parse.Cloud.beforeDelete = Parse.Cloud.afterDelete = function(){};
+Parse.Cloud.job = Parse.Cloud.define = Parse.Cloud.beforeSave = Parse.Cloud.afterSave = Parse.Cloud.afterDelete = function(){};
+
+var registered = {
+}
+
+var hook = function(hook, app) {
+	return function(className, callback){
+		if (typeof className == 'function') {
+			className = className.prototype.className
+		};
+		registered[hook] ? undefined : registered[hook] = []
+		registered[hook].push(className);
+		app.get("/cloudcode/"+className+"/"+hook, function(req, res){
+			callback(req, {
+				success: function(data){
+					res.send(data)
+				},
+				error: function(error){
+					res.fail(error)
+				}
+			})
+		})
+	}
+}
+
+
 Parse.Cloud.httpRequest = require("./lib/httpRequest");
 
 Parse.Cloud._expressCookieEncryptionKey = function(){
 	return "34dc3e303f57bd18f4b1d16995d36245";
 }
-Parse.User.prototype.getSessionToken = function(){
-    return this._sessionToken;
-}
 
 module.exports.Parse = Parse;
+module.exports.CloudCode = function(app) {
+	Parse.Cloud.beforeSave = hook("beforeSave", app)
+	Parse.Cloud.afterSave = hook("afterSave", app);
+	Parse.Cloud.beforeDelete = hook("beforeDelete", app); 
+	Parse.Cloud.afterDelete = hook("afterDelete", app);
+}
+
+module.exports.LogCloudCodeFunctions = function(){
+	var keys = Object.keys(registered);
+	for(var k in keys) {
+		console.log(keys[k]+": ");
+		for(var j in registered[keys[k]]) {
+			console.log("    "+ registered[keys[k]][j])
+		}
+	}
+}
