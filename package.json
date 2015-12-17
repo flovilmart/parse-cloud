@@ -1,6 +1,6 @@
 {
   "name": "parse-cloud",
-  "version": "0.0.82",
+  "version": "0.1",
   "description": "Parse Cloud additions for parse-develop",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
   "dependencies": {
     "body-parser": "^1.12.2",
     "parse": "~1.4.0",
+    "parse-cloud-express": "^1.1.0",
     "xmlhttprequest": ">=1.3.0"
   }
 }

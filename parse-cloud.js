@@ -1,10 +1,8 @@
-var Parse = require("parse").Parse;
+var Parse = require('parse-cloud-express').Parse;
 var bodyParser = require('body-parser');
 Parse.Cloud = Parse.Cloud || {};
-Parse.Cloud.job = Parse.Cloud.define = Parse.Cloud.beforeSave = Parse.Cloud.afterSave = Parse.Cloud.afterDelete = function(){};
 
-var registered = {
-}
+var registered = {}
 
 var hook = function(hook, app) {
 	return function(className, callback){
@@ -34,7 +32,7 @@ var hook = function(hook, app) {
 }
 
 
-Parse.Cloud.httpRequest = require("./lib/httpRequest");
+//Parse.Cloud.httpRequest = require("./lib/httpRequest");
 
 Parse.Cloud._expressCookieEncryptionKey = function(){
 	return "34dc3e303f57bd18f4b1d16995d36245";
